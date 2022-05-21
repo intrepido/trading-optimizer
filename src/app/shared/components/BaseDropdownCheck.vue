@@ -1,34 +1,46 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
-import { WeightDescriptor } from '../models/weight-descriptor.model';
+import { ref, onMounted, watch } from 'vue'
 
-const props = defineProps<{ weightDescriptors: WeightDescriptor[] }>()
+import { ValueType } from './../../shared/models/value-type.model';
+import { WeightOption } from '../models/weight-option.model';
+
+const props = defineProps<{
+  reset: boolean,
+  weightOptions: WeightOption[],
+}>()
 const emit = defineEmits<{
-  (e: 'value', val: number): void
+  (e: 'value', val: ValueType): void
 }>()
 const isChecked = ref(false)
-const prevSelectedValue = ref(0)
+const prevWeight = ref(0)
 const selectedValue = ref()
 
 onMounted(() => {
-  if (props.weightDescriptors.length && props.weightDescriptors[0]?.weight !== null) {
-    selectedValue.value = props.weightDescriptors[0].weight
+  if (props.weightOptions.length && props.weightOptions[0]?.weight !== null) {
+    selectedValue.value = props.weightOptions[0]
+  }
+})
+
+watch(() => props.reset, (current, prev) => {
+  if (isChecked.value && current) {
+    isChecked.value = !current
+    update()
   }
 })
 
 function update(): void {
-  let val = 0
+  let weight = 0
   if (isChecked.value) {
-    if (prevSelectedValue.value !== 0) {
-      val = selectedValue.value - prevSelectedValue.value
+    if (prevWeight.value !== 0) {
+      weight = selectedValue.value.weight - prevWeight.value
     } else {
-      val = selectedValue.value
+      weight = selectedValue.value.weight
     }
-    prevSelectedValue.value = selectedValue.value
-    emit('value', val)
+    prevWeight.value = selectedValue.value.weight
+    emit('value', { value: weight, type: selectedValue.value.option.type } as ValueType)
   } else {
-    emit('value', -prevSelectedValue.value)
-    prevSelectedValue.value = val
+    emit('value', { value: -prevWeight.value, type: selectedValue.value.option.type } as ValueType)
+    prevWeight.value = weight
   }
 }
 
@@ -40,14 +52,14 @@ function updateIfChecked(): void {
 </script>
 
 <template>
-  <div class="input-group mb-3">
+  <div class="input-group mb-1">
     <div class="input-group-text">
       <input @change="update" v-model="isChecked" class="form-check-input mt-0" type="checkbox" value="">
     </div>
     <select @change="updateIfChecked" v-model="selectedValue" class="form-select">
-      <option v-for="weightDescriptor in props.weightDescriptors" :key="weightDescriptor.id"
-        :value="weightDescriptor.weight">
-        {{ weightDescriptor.name }}
+      <option v-for="weightOption in props.weightOptions" :key="weightOption.option.id"
+        :value="weightOption">
+        {{ weightOption.option.name }}
       </option>
     </select>
   </div>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
-import OptimizerBoard from './app/optimizer-board/containers/OptimizerBoard.vue'
+import BoardAnalysis from './app/board-analysis/containers/BoardAnalysis.vue'
 </script>
 
 <template>
@@ -45,7 +45,7 @@ import OptimizerBoard from './app/optimizer-board/containers/OptimizerBoard.vue'
     </header>
 
     <main>
-      <OptimizerBoard />
+      <BoardAnalysis />
     </main>
 
     <footer class="pt-4 my-md-5 pt-md-5 border-top">
