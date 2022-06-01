@@ -11,7 +11,8 @@ const props = defineProps<{
   weight: Weight,
   options: Option[],
   reset: boolean,
-  style: { groupName: string, wrapperTag: string }
+  groupName: string, 
+  style: { wrapperTag: string, disabled?: boolean }
 }>()
 const emit = defineEmits<{
   (e: 'value', val: ValueType): void
@@ -21,7 +22,7 @@ const selectedValue = ref('')
 
 onMounted(() => {
   id.value = shortUniqueId()
-  
+
 })
 
 function update(valueType: ValueType): void {
@@ -40,8 +41,9 @@ function render() {
       h(BaseRadioButton, {
         ['weight-option']: { weight: props.weight, option },
         reset: props.reset,
-        ['group-name']: props.style.groupName,
+        ['group-name']: props.groupName,
         ['selected-value']: selectedValue.value,
+        ['style']: { disabled: props.style.disabled },
         onValue(event: ValueType) {
           update(event)
         }
@@ -53,7 +55,7 @@ function render() {
 
 <template>
   <render />
-   <!-- <td v-for="option in props.options" :key="option.id + id">
+  <!-- <td v-for="option in props.options" :key="option.id + id">
     <BaseRadioButton2 :weight-option="{ weight: props.weight, option }" :reset="reset" @value="update" :group-name="id"
       :selected-value="selectedValue" />
   </td> -->

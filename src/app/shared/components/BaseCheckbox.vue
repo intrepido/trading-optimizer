@@ -42,10 +42,10 @@ function update(): void {
   <div v-unwrap="!!props.style?.isUnwrapped" class="form-check">
     <input v-model="isChecked" @change="update"
       :class="weightOption.option?.style?.type === ElementType.Button ? 'btn-check' : 'form-check-input'"
-      :id="props.weightOption?.option.id + id" type="checkbox" />
+      :id="props.weightOption?.option?.id + id" type="checkbox" />
     <label
-      :class="weightOption.option.style?.type === ElementType.Button ? 'btn ' + weightOption.option.style?.class : 'form-check-label'"
-      :for="props.weightOption?.option.id + id">
+      :class="weightOption.option?.style?.type === ElementType.Button ? 'btn ' + weightOption.option?.style?.class : 'form-check-label'"
+      :for="props.weightOption?.option?.id + id">
       {{ props.weightOption?.option?.name }}
     </label>
   </div>

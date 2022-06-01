@@ -40,8 +40,8 @@ function update(valueType: ValueType): void {
                 <div class="card-body d-grid text-start">
                   <div class="col d-grid gap-3">
                     <h5 class="card-title">Macro Trend</h5>
-                    <BaseTable :model="appConstants.weight.marketSentiment.macroTrend" :reset="reset"
-                      @value="update"></BaseTable>
+                    <BaseTable :model="appConstants.weight.marketSentiment.macroTrend" :reset="reset" @value="update">
+                    </BaseTable>
                   </div>
                 </div>
               </div>
@@ -51,7 +51,7 @@ function update(valueType: ValueType): void {
                 <div class="card-body d-grid text-start">
                   <div class="col d-grid gap-3">
                     <h5 class="card-title">Immediate Trend</h5>
-                    <BaseTable :model="appConstants.weight.marketSentiment.immediateTrend" :reset="reset"
+                     <BaseTable :model="appConstants.weight.marketSentiment.immediateTrend" :reset="reset"
                       @value="update"></BaseTable>
                   </div>
                 </div>

@@ -34,4 +34,22 @@ export const enum WeightDivergency {
     CDVLackBuyInterestDivergence = 2,
 }
 
-export type Weight = WeightPattern | WeightMarketSentiment | WeightDivergency;
+export const enum WeightOperation {
+    TwentyOneEMA1minChart = 2,
+    TwentyOneEMA5minChart = 2,
+    TwoHundredMA1minChart = 3,
+    TwoHundredMA5minChart = 3,
+    VWAPLine1minChart = 3,
+    VWAPBandLine1minChart = 1,
+    StrongKeyLevel = 3,
+    WeakKeyLevel = 2,
+    ChannelBorder= 2,
+    ChannelMiddleLine = 1,
+    FibonacciKeyLevel = 3,
+    BrokenTrend = 4,
+    VolumenRetracement = 5,
+    SessionVolumeProfilePOC = 2,
+    LackLiquidityBreakoutArea = 3
+}
+
+export type Weight = WeightPattern | WeightMarketSentiment | WeightDivergency | WeightOperation;

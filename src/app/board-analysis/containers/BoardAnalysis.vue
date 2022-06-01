@@ -5,11 +5,10 @@ import { computed } from '@vue/reactivity'
 import MarketSentiment from '../components/MarketSentiment.vue'
 import Divergency from '../components/Divergency.vue'
 import Pattern from '../components/Pattern.vue'
-import PatternBreakout from '../components/PatternBreakout.vue'
-import Pullback from '../components/Pullback.vue'
 import { ActionType } from '../../shared/enums/action-type.enum'
 import BaseProgressBar from '../../shared/components/BaseProgressBar.vue'
 import { ValueType } from './../../shared/models/value-type.model';
+import Operations from '../components/Operations.vue'
 
 const globalList = ref(new Map<ActionType, number>())
 const percentageByType = computed((): Map<ActionType, number> => {
@@ -60,9 +59,8 @@ function update(valueType: ValueType): void {
   <div class="row row-cols-1 row-cols-md-1 mb-1 text-center">
     <Divergency @value="update" />
   </div>
-  <div class="row row-cols-1 row-cols-md-2 mb-2 text-center">
-    <PatternBreakout msg="Hello Vue 3 + TypeScript + Vite" />
-    <Pullback msg="Hello Vue 3 + TypeScript + Vite" />
+  <div class="row row-cols-1 row-cols-md-1 mb-1 text-center">
+    <Operations @value="update"></Operations>
   </div>
 </template>
 

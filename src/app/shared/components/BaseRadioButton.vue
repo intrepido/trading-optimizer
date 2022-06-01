@@ -9,7 +9,10 @@ const props = defineProps<{
   weightOption: WeightOption,
   reset: boolean,
   groupName: string,
-  selectedValue: string
+  selectedValue: string,
+  style?: {
+    disabled?: boolean
+  }
 }>()
 const emit = defineEmits<{
   (e: 'value', val: ValueType): void
@@ -34,7 +37,7 @@ function update(): void {
 <template>
   <div class="form-check">
     <input v-model="selectedValue" @change="update" :value="props.weightOption?.option?.type || ''" class="form-check-input"
-      :id="props.weightOption?.option.id + id" :name="groupName" :checked="props.weightOption?.option?.default"
+      :id="props.weightOption?.option.id + id" :name="groupName" :checked="props.weightOption?.option?.default" :disabled="props?.style?.disabled"
       type="radio" />
     <label class="form-check-label" :for="props.weightOption?.option.id + id">
       {{ props.weightOption?.option?.name }}
