@@ -5,20 +5,20 @@ The main goal of this project is to provide a useful tool to identify entry oppo
 
 ![Trading Board Analysis](/src/assets/trading-board.png)
 
-###How to use
+## How to use
 
-####Install
+#### Install
 
 ```
 npm install
 ```
 
-####Compile and run
+#### Compile and run
 
 ```
 npm run dev
 ```
 
-###License
+## License
 
 All code found in this repository is licensed under GPL v3
