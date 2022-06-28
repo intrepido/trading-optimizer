@@ -37,9 +37,10 @@ import BoardAnalysis from './app/board-analysis/containers/BoardAnalysis.vue'
       <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
         <h1 class="display-4 fw-normal">Trading Board Analysis</h1>
         <p class="fs-5 text-muted">
-          Quickly build an effective pricing table for your potential
-          customers with this Bootstrap example. It’s built with default
-          Bootstrap components and utilities with little customization.
+          In this section you have a set of modules with indicators, patterns, strategies and other criteria that you
+          can use to identify the most likely direction the trade will take.
+          Complete the modules according to your trading analysis, any selection you make will affect the final balance
+          between Buy and Sell in order to take action.
         </p>
       </div>
     </header>
